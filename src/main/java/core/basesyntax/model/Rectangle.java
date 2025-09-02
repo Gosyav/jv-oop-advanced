@@ -27,8 +27,8 @@ public class Rectangle extends Figure {
     public void draw() {
         System.out.println("Rectangle: "
                 + "color: " + getColor()
-                + ", width: " + getWidth()
-                + ", height: " + getHeight()
-                + ", area: " + getArea());
+                + ", width: " + getWidth() + " units"
+                + ", height: " + getHeight() + " units"
+                + ", area: " + getArea() + " square units");
     }
 }

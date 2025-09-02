@@ -2,45 +2,53 @@ package core.basesyntax.service;
 
 import core.basesyntax.model.Circle;
 import core.basesyntax.model.Figure;
+import core.basesyntax.model.IsoscelesTrapezoid;
+import core.basesyntax.model.Rectangle;
+import core.basesyntax.model.RightTriangle;
+import core.basesyntax.model.Square;
 import java.util.Random;
 
 public class FigureSupplier {
-    private Random random = new Random();
+    private static final int FIGURE_TYPES_COUNT = 5;
+    private static final int MAX_SIZE = 10;
+
+    private final Random random = new Random();
+    private final ColorSupplier colorSupplier = new ColorSupplier();
 
     public Figure getRandomFigure() {
-        ColorSupplier colorSupplier = new ColorSupplier();
-        int randomIndex = random.nextInt(5) + 1;
-        String color = colorSupplier.getRandomColor().toString();
+        int randomIndex = random.nextInt(FIGURE_TYPES_COUNT) + 1;
+        String color = colorSupplier.getRandomColor();
+
+        int side;
         int radius;
         int width;
         int height;
         int base;
         int firstLeg;
         int secondLeg;
-        int side;
 
         switch (randomIndex) {
             case 1:
-                side = random.nextInt(10) + 1;
-                return new core.basesyntax.model.Square(side, color);
+                side = random.nextInt(MAX_SIZE) + 1;
+                return new Square(side, color);
             case 2:
-                radius = random.nextInt(10) + 1;
-                return new core.basesyntax.model.Circle(radius, color);
+                radius = random.nextInt(MAX_SIZE) + 1;
+                return new Circle(radius, color);
             case 3:
-                width = random.nextInt(10) + 1;
-                height = random.nextInt(10) + 1;
-                return new core.basesyntax.model.Rectangle(width, height, color);
+                width = random.nextInt(MAX_SIZE) + 1;
+                height = random.nextInt(MAX_SIZE) + 1;
+                return new Rectangle(width, height, color);
             case 4:
-                firstLeg = random.nextInt(10) + 1;
-                secondLeg = random.nextInt(10) + 1;
-                return new core.basesyntax.model.RightTriangle(firstLeg, secondLeg, color);
+                firstLeg = random.nextInt(MAX_SIZE) + 1;
+                secondLeg = random.nextInt(MAX_SIZE) + 1;
+                return new RightTriangle(firstLeg, secondLeg, color);
             case 5:
-                height = random.nextInt(10) + 1;
-                base = random.nextInt(10) + 1;
-                side = random.nextInt(10) + 1;
-                return new core.basesyntax.model.IsoscelesTrapezoid(base, height, side, color);
+                base = random.nextInt(MAX_SIZE) + 1;
+                height = random.nextInt(MAX_SIZE) + 1;
+                side = random.nextInt(MAX_SIZE) + 1;
+                return new IsoscelesTrapezoid(base, height, side, color);
             default:
-                throw new RuntimeException("Can't create figure");
+                return getDefaultFigure();
         }
     }
 

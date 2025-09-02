@@ -26,9 +26,9 @@ public class RightTriangle extends Figure {
     @Override
     public void draw() {
         System.out.println("RightTriangle: "
-                + "color: " + getColor()
-                + ", base: " + getFirstLeg()
-                + ", height: " + getSecondLeg()
-                + ", area: " + getArea());
+                + "color: " + getColor() + " units"
+                + ", base: " + getFirstLeg() + " units"
+                + ", height: " + getSecondLeg() + " units"
+                + ", area: " + getArea() + " square units");
     }
 }
