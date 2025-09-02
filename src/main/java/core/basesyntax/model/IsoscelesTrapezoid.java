@@ -36,6 +36,6 @@ public class IsoscelesTrapezoid extends Figure {
                 + ", base: " + getBase() + " units"
                 + ", height: " + getHeight() + " units"
                 + ", side: " + getSide() + " units"
-                + ", area: " + getArea() + " square units");
+                + ", area: " + getArea() + " sq. units");
     }
 }
